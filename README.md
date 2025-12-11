@@ -13,13 +13,18 @@ L’objectif n’est pas de reproduire un système réel, mais de :
 
 ## 🎢 Modules
 
-### 1. `block_zone_basic`
+### 1. `on_vehicule_distance_sensor`
 
-Simulation simple d’une block-zone à partir d’un capteur ultrason :
+Ce module simule un **capteur embarqué sur un véhicule de dark ride**, chargé de surveiller
+la distance avec le véhicule qui se trouve devant lui.
 
-- mesure en continu de la distance avec un “véhicule” fictif,
-- gestion de plusieurs zones (SAFE / WARNING / EMERGENCY STOP),
-- affichage de l’état dans le Moniteur Série (IHM texte).
+Dans de nombreuses attractions, ce type de logique permet d’éviter les rattrapages et de
+détecter les situations anormales (distance trop faible, vitesse inadéquate, arrêt non prévu).
+
+Ce module gère trois états :
+- SAFE → distance normale
+- WARNING → rapprochement inhabituel du véhicule précédent
+- EMERGENCY STOP → seuil critique dépassé (arrêt de sécurité)
 
 👉 Code : [`modules/block_zone_basic/block_zone_basic.ino`](modules/block_zone_basic/block_zone_basic.ino)  
 👉 Description détaillée : (à venir)
