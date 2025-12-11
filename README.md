@@ -55,6 +55,5 @@ J’utilise ce projet pour relier :
 ## 📬 Contact
 
 • Email : **assiamoubakir@gmail.com**  
-• GitHub : Assiambk
 
-• LinkedIn : www.linkedin.com/in/assia-moubakir-98926019b
+• LinkedIn : **www.linkedin.com/in/assia-moubakir-98926019b**
