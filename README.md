@@ -26,7 +26,7 @@ Ce module gère trois états :
 - WARNING → rapprochement inhabituel du véhicule précédent
 - EMERGENCY STOP → seuil critique dépassé (arrêt de sécurité)
 
-👉 Code : [`modules/block_zone_basic/block_zone_basic.ino`](modules/block_zone_basic/block_zone_basic.ino)  
+👉 Code : [`modules/on_vehicule_distance_sensor/on_vehicule_distance_sensor.ino`](modules/on_vehicule_distance_sensor/on_vehicule_distance_sensor.ino)  
 👉 Description détaillée : (à venir)
 
 ---
