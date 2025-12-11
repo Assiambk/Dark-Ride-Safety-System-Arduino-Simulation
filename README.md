@@ -1,64 +1,70 @@
-# Dark-Ride-Safety-System-Arduino-Simulation
+# Dark Ride Safety System – Arduino Simulation
 
-Ce projet regroupe plusieurs petites simulations inspirées des systèmes de sécurité des dark rides
-(block-zones, distances entre véhicules, arrêts d’urgence, logique d’exploitation).
+Ce projet regroupe plusieurs simulations inspirées des logiques de sécurité utilisées dans les dark rides :
+monitoring de distance entre véhicules, transitions d’états (SAFE / WARNING / EMERGENCY STOP), principes
+de block-zones, et comportements système élémentaires.
 
-L’objectif n’est pas de reproduire un système réel, mais de :
+L’objectif n’est **pas** de reproduire un système réel, mais de :
+
 - comprendre les **principes généraux** de sécurité d’attraction,
-- les traduire dans des petits modules Arduino,
-- faire le lien entre mon expérience terrain en tant qu’Opératrice Animatrice Attraction
-  et ma formation d’ingénieure systèmes.
+- les transformer en modules Arduino pédagogiques,
+- illustrer la façon dont mon expérience terrain d’opératrice attraction se connecte à ma formation d’ingénieure.
 
 ---
 
 ## 🎢 Modules
 
-### 1. `on_vehicule_distance_sensor`
+### 1. `on_vehicle_distance_sensor`
 
-Ce module simule un **capteur embarqué sur un véhicule de dark ride**, chargé de surveiller
-la distance avec le véhicule qui se trouve devant lui.
+Ce module simule un **capteur embarqué sur un véhicule de dark ride**.  
+Il surveille la distance avec le véhicule précédent et applique trois états de sécurité :
 
-Dans de nombreuses attractions, ce type de logique permet d’éviter les rattrapages et de
-détecter les situations anormales (distance trop faible, vitesse inadéquate, arrêt non prévu).
+- **SAFE** → distance normale  
+- **WARNING** → rapprochement inhabituel  
+- **EMERGENCY STOP** → distance critique (arrêt simulé)
 
-Ce module gère trois états :
-- SAFE → distance normale
-- WARNING → rapprochement inhabituel du véhicule précédent
-- EMERGENCY STOP → seuil critique dépassé (arrêt de sécurité)
+Dans de nombreuses attractions, ce principe contribue à éviter les rattrapages et à détecter des
+situations potentiellement dangereuses.
 
-👉 Code : [`modules/on_vehicule_distance_sensor/on_vehicule_distance_sensor.ino`](modules/on_vehicule_distance_sensor/on_vehicule_distance_sensor.ino)  
-👉 Description détaillée : (à venir)
+👉 Code : [`modules/on_vehicle_distance_sensor/on_vehicle_distance_sensor.ino`](modules/on_vehicle_distance_sensor/on_vehicle_distance_sensor.ino)  
+👉 Documentation détaillée : à venir
 
 ---
 
-## 🧩 Contexte
+## 🧩 Contexte général
 
-Dans les dark rides, le parcours est découpé en **block-zones**.  
-Chaque zone ne peut être occupée que par un seul véhicule (VL) à la fois.
+Dans les dark rides, le parcours est traditionnellement divisé en **block-zones**, chacune ne pouvant
+être occupée que par un seul véhicule (VL).  
+Les systèmes embarqués (capteurs, encodeurs, surveillance positionnelle) permettent d'assurer :
 
-Si deux véhicules se rapprochent trop :
-- on passe d’abord dans une zone de **surveillance** (warning),
-- puis on peut aller jusqu’à un **arrêt d’urgence** pour éviter un rattrapage.
+- le respect des distances,  
+- la détection d’arrêts inattendus,  
+- la mise en sécurité automatique si nécessaire.
 
-Ce projet est une manière simple de :
-- rejouer ces logiques sur une table, avec un Arduino et quelques capteurs,
-- préparer un futur projet plus poussé autour du comptage de véhicules et de la logique d’E-stop.
+Ce projet explore ces notions à travers des modules simples :
+
+- capteur embarqué surveillant le véhicule précédent,  
+- transitions logiques entre différents états,  
+- premières briques d’une architecture de sécurité.
+
+Ces modules constituent une base pour un futur projet plus avancé autour du comptage de véhicules
+et de la logique d'arrêt automatique type “VL mal lu / incohérence de zone”.
 
 ---
 
 ## 👩‍🔧 À propos
 
-Je m’appelle Assia, je suis étudiante en ingénierie futurement spécialisée en systèmes embarqués et ancienne
-Opératrice Animatrice Attraction à Disneyland Paris.
+Je m’appelle **Assia**, étudiante en ingénierie (futurement spécialisée en systèmes embarqués)  
+et ancienne **Opératrice Animatrice Attraction** à Disneyland Paris.
 
 J’utilise ce projet pour relier :
-- ce que j’ai vu et vécu côté **Opérations** (pannes, E-stop, procédures),
-- ce que j’apprends côté **systèmes** actuellement en auto-didacte (capteurs, états, sécurité, automates).
+
+- ce que j’ai appris **côté Opérations** : pannes, E-stop, logique terrain, sécurité, procédures d’exploitation ;  
+- ce que j’apprends **côté ingénierie** : capteurs, microcontrôleurs, systèmes embarqués, états, sûreté de fonctionnement.
 
 ---
 
 ## 📬 Contact
 
 • Email : **assiamoubakir@gmail.com**  
-
-• LinkedIn : **www.linkedin.com/in/assia-moubakir-98926019b**
+• LinkedIn : **https://www.linkedin.com/in/assia-moubakir-98926019b/**
