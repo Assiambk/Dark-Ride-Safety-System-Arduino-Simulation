@@ -35,7 +35,7 @@ It applies three safety states:
 This logic is widely used in real attractions to prevent collisions and detect unsafe situations.
 
 
-👉 Code : [on_vehicle_distance_sensor.ino](on_vehicle_distance_sensor.ino)
+👉 Code : ['modules/on_vehicule_distance_sensor/on_vehicule_distance_sensor.ino']
 
 
 ---
