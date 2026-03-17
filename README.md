@@ -1,14 +1,22 @@
 # Dark Ride Safety System – Arduino Simulation
 
-Ce projet regroupe plusieurs simulations inspirées des logiques de sécurité utilisées dans les dark rides :
-monitoring de distance entre véhicules, transitions d’états (SAFE / WARNING / EMERGENCY STOP), principes
-de block-zones, et comportements système élémentaires.
+This project explores safety logic used in dark ride systems through simple Arduino-based simulations. 
 
-L’objectif n’est **pas** de reproduire un système réel, mais de :
+It focuses on key principles such as: 
 
-- comprendre les **principes généraux** de sécurité d’attraction,
-- les transformer en modules Arduino pédagogiques,
-- illustrer la façon dont mon expérience terrain d’opératrice attraction se connecte à ma formation d’ingénieure.
+- vehicle distance monitoring
+- system state transitions ( SAFE/ WARNING/ EMERGENCY STOP)
+- block zone logic
+- basic safety behaviors in ride operations
+
+The goal is **not** to replicate a real industrial system, but to: 
+
+- understand core ride safety principles
+- translate them into simple embedded modules
+- connect real-world operational experience with engineering concepts
+
+This project is directly inspireed by my experience as a Ride Operator, where I obsvered how safety systems behave in real conditions.
+
 
 ---
 
@@ -16,51 +24,46 @@ L’objectif n’est **pas** de reproduire un système réel, mais de :
 
 ### 1. `on_vehicle_distance_sensor`
 
-Ce module simule un **capteur embarqué sur un véhicule de dark ride**.  
-Il surveille la distance avec le véhicule précédent et applique trois états de sécurité :
+This module simulates an onboard sensor monitoring the distance to the vehicle ahead. 
 
-- **SAFE** → distance normale  
-- **WARNING** → rapprochement inhabituel  
-- **EMERGENCY STOP** → distance critique (arrêt simulé)
+It applies three safety states: 
 
-Dans de nombreuses attractions, ce principe contribue à éviter les rattrapages et à détecter des
-situations potentiellement dangereuses.
+- **SAFE** → normal distance
+- **WARNING** → abnormal proximity
+- **EMERGENCY STOP** → critical distance (simulated stop)
+
+This logic is widely used in real attractions to prevent collisions and detect unsafe situations.
+
 
 👉 Code : [`modules/on_vehicle_distance_sensor/on_vehicle_distance_sensor.ino`](modules/on_vehicle_distance_sensor/on_vehicle_distance_sensor.ino)  
-👉 Documentation détaillée : à venir
+
 
 ---
 
-## 🧩 Contexte général
+## 🧩 System Overview
 
-Dans les dark rides, le parcours est traditionnellement divisé en **block-zones**, chacune ne pouvant
-être occupée que par un seul véhicule (VL).  
-Les systèmes embarqués (capteurs, encodeurs, surveillance positionnelle) permettent d'assurer :
+In dark rides, the track is divided into **block-zones**, where only one vehicle is allowed per section.
 
-- le respect des distances,  
-- la détection d’arrêts inattendus,  
-- la mise en sécurité automatique si nécessaire.
+Embedded systems (sensors, position tracking, control logic) ensure:
 
-Ce projet explore ces notions à travers des modules simples :
+-safe distance between vehicles
+-detection of unexpected stops
+-automatic safety responses when necessary
 
-- capteur embarqué surveillant le véhicule précédent,  
-- transitions logiques entre différents états,  
-- premières briques d’une architecture de sécurité.
 
-Ces modules constituent une base pour un futur projet plus avancé autour du comptage de véhicules
-et de la logique d'arrêt automatique type “VL mal lu / incohérence de zone”.
 
 ---
 
-## 👩‍🔧 À propos
+## 👩‍🔧 About
 
-Je m’appelle **Assia**, étudiante en ingénierie (futurement spécialisée en systèmes embarqués)  
-et ancienne **Opératrice Animatrice Attraction** à Disneyland Paris.
+My name is Assia, an engineering student specializing in embedded systems and a former Ride Operator at Disneyland Paris.
 
-J’utilise ce projet pour relier :
+This projects bridges:
 
-- ce que j’ai appris **côté Opérations** : pannes, E-stop, logique terrain, sécurité, procédures d’exploitation ;  
-- ce que j’apprends **côté ingénierie** : capteurs, microcontrôleurs, systèmes embarqués, états, sûreté de fonctionnement.
+- **operations experience** (failures, E-stop logic, real-world safety procedures)
+- **engineering knowledge** (sensors, microcontrollers, embedded systems, system states)
+
+
 
 ---
 
