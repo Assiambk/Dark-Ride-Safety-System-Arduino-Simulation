@@ -54,7 +54,7 @@ le but est la pédagogie, pas la fidélité aux valeurs réelles.
 # 💻 Code principal (extrait)
 
 👉 Le code complet est disponible ici :  
-[`on_vehicle_distance_sensor.ino`](on_vehicle_distance_sensor.ino)
+[on_vehicle_distance_sensor.ino](on_vehicle_distance_sensor.ino)
 
 ```cpp
 if (distanceCm <= WARNING_DISTANCE) {
