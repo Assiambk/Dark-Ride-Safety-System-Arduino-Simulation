@@ -46,9 +46,9 @@ In dark rides, the track is divided into **block-zones**, where only one vehicle
 
 Embedded systems (sensors, position tracking, control logic) ensure:
 
--safe distance between vehicles
--detection of unexpected stops
--automatic safety responses when necessary
+- safe distance between vehicles
+- detection of unexpected stops
+- automatic safety responses when necessary
 
 
 
