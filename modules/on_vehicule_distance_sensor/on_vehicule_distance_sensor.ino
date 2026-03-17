@@ -1,35 +1,34 @@
-/****************************************************
+/*******************************************************
  * Dark Ride Safety System – On-Vehicle Distance Sensor
  * Assia M. – 2025
  *
- * Objectif :
- *  - Simuler un capteur embarqué sur un véhicule (VL)
- *    qui surveille la distance avec le véhicule précédent.
- *  - Déclencher des états sécurité en fonction
- *    du rapprochement :
- *       • SAFE
- *       • WARNING
- *       • EMERGENCY STOP
+ * Objective:
+ * - Simulate an onboard sensor on a vehicle
+ *   monitoring the distance to the vehicle ahead
+ * - Trigger safety states based on proximity:
+ *     • SAFE
+ *     • WARNING
+ *     • EMERGENCY STOP
  *
- * Notes :
- *  - Le capteur représente un capteur embarqué (comme sur Pinocchio).
- *  - Le "véhicule devant" est simulé par un objet placé devant le capteur.
- ****************************************************/
+ * Notes:
+ * - The sensor represents an onboard sensor (like in real rides such as Pinocchio).
+ * - The "vehicle ahead" is simulated by an object placed in front of the sensor.
+ *******************************************************/
 
-// --- Pins du capteur ultrason HC-SR04 ---
+// --- Ultrasonic sensor HC-SR04 pins ---// 
 const int trigPin = 9;
 const int echoPin = 10;
 
-// --- Variables pour la mesure ---
+// --- Mesureable variables ---
 long duration;
 int distanceCm;
 
-// --- Seuils de sécurité ---
+// --- safety thresholds ---
 const int SAFE_DISTANCE = 50;        // Distance > 50 cm → SAFE
 const int WARNING_DISTANCE = 20;     // 20–50 cm        → WARNING
 // Distance ≤ 20 cm                   → EMERGENCY STOP
 
-// --- États du véhicule ---
+// --- Vehicule states ---
 enum VehicleState {
   STATE_SAFE,
   STATE_WARNING,
@@ -55,7 +54,7 @@ void setup() {
 
 
 // ------------------------------------------------------------
-// Fonction : mesure la distance avec HC-SR04
+// Function : measure distance using HC- SR04
 // ------------------------------------------------------------
 int getDistance() {
   digitalWrite(trigPin, LOW);
@@ -67,19 +66,19 @@ int getDistance() {
 
   duration = pulseIn(echoPin, HIGH);
 
-  return duration * 0.034 / 2; // Conversion en cm
+  return duration * 0.034 / 2; // Conversion in cm
 }
 
 
 // ------------------------------------------------------------
-// LOOP – Logique principale
+// LOOP – main logic 
 // ------------------------------------------------------------
 void loop() {
 
-  // --- Prise de mesure ---
+  // --- distance measurement ---
   distanceCm = getDistance();
 
-  // --- Détermination de l'état ---
+  // --- state determination ---
   if (distanceCm <= WARNING_DISTANCE) {
     currentState = STATE_EMERGENCY_STOP;
   }
@@ -90,7 +89,7 @@ void loop() {
     currentState = STATE_SAFE;
   }
 
-  // --- Affichage IHM (console) ---
+  // --- HMI display (console) ---
   switch (currentState) {
 
     case STATE_SAFE:
@@ -100,13 +99,13 @@ void loop() {
       break;
 
     case STATE_WARNING:
-      Serial.print("[WARNING]         VL proche : ");
+      Serial.print("[WARNING]         Vehicle too close : ");
       Serial.print(distanceCm);
       Serial.println(" cm");
       break;
 
     case STATE_EMERGENCY_STOP:
-      Serial.print("[EMERGENCY STOP]  Distance critique ! ");
+      Serial.print("[EMERGENCY STOP]  Critical distance : ");
       Serial.print(distanceCm);
       Serial.println(" cm");
       break;
